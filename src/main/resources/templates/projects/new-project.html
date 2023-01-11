@@ -2,22 +2,153 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layouts :: header"></head>
+<head th:replace="~{layouts :: header}"></head>
+
+<style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 530px;
+    height: 650px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+#lastname {
+	 display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#description {
+	 display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+#email {
+	 display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+form{
+    height: 720px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: black;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+</style>
 
 <body>
-<nav th:replace="layouts :: navbar"></nav>
+<nav th:replace="~{layouts :: navbar}"></nav>
 
 	<div class="container">
-		<form action="/projects/save" th:object="${project}"method="POST">
-		<input type="text" placeholder="Project Name" th:field="${project.name}">
-		<select th:field="${project.stage}">
+		<form th:action="@{/projects/save}" th:object="${project}"method="POST">
+		
+		<h3>Create Your Project Here</h3>
+		
+		<label for="firstName">Project Name</label>
+		<input type="text" placeholder="Project Name" id="firstname" th:field="${project.name}">
+		
+		<label for="lastName">Choose Status</label>
+		<select id="lastname" th:field="${project.stage}">
 			<option th:value="NOTSTARTED"> Not Started</option>
 			<option th:value="INPROGRESS"> In Progress</option>
 			<option th:value="COMPLETED"> Completed</option>
 		</select>
-		<textarea type="text" placeholder="Enter Project Description" th:field="${project.description}"></textarea>
 		
-		<select th:field="*{employees}" multiple="multiple">
+		<label for="username">Description</label>
+		<textarea type="text" id="description" placeholder="Enter Project Description" th:field="${project.description}"></textarea>
+		
+		<label for="email">Assign To</label>
+		<select id="email" th:field="*{employees}" multiple="multiple">
 			<option th:each = "employee : ${allEmployees}"
 					th:value = "${employee.employeeId}"
 					th:text = "${employee.firstName}">
@@ -30,3 +161,4 @@
 </body>
 
 </html>
+
