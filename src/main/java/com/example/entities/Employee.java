@@ -11,12 +11,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="employee_seq")
+	@SequenceGenerator(initialValue=1, name="employee_seq", allocationSize=1)
 	private long employeeId;
 	
 	private String firstName;
@@ -24,7 +27,9 @@ public class Employee {
 	private String email;
 	
 	
-	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+	
+	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST}, 
+				fetch = FetchType.LAZY)
 	@JoinTable(name="project_employee", 
 	joinColumns=@JoinColumn(name="employee_id"),
 	inverseJoinColumns=@JoinColumn(name="project_id"))
@@ -36,11 +41,12 @@ public class Employee {
 		
 	}
 	
-	public Employee(String firstName, String lasttName, String email) {
+	public Employee(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
-		this.lastName = lasttName;
+		this.lastName = lastName;
 		this.email = email;
+		
 	}
 	
 	public List<Project> getProjects() {
@@ -75,4 +81,5 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 }

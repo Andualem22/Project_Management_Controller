@@ -12,12 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Project {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(initialValue=1, name="project_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="project_seq")
 	private long projectId;
 	
 	private String name;
@@ -39,19 +41,19 @@ public class Project {
 		
 	}
 	
-	public Project(String name, String stage, String description) {
-		super();
-		this.name = name;
-		this.stage = stage;
-		this.description = description;
-	}
-	
 	public List<Employee> getEmployees() {
 		return employees;
 	}
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+	
+	public Project(String name, String stage, String description) {
+		super();
+		this.name = name;
+		this.stage = stage;
+		this.description = description;
 	}
 	
 	public long getProjectId() {
