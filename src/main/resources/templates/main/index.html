@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HOME - Andualem Teshome</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style media="screen">
+     		*,
+			*:before,
+			*:after{
+			    padding: 0;
+			    margin: 0;
+			    box-sizing: border-box;
+			}
+			body{
+			    background-color: #080710;
+			}
+			.background{
+			    width: 430px;
+			    height: 520px;
+			    position: absolute;
+			    transform: translate(-50%,-50%);
+			    left: 50%;
+			    top: 50%;
+			}
+			
+			form{
+			    height: 550px;
+			    width: 400px;
+			    background-color: rgba(255,255,255,0.13);
+			    position: absolute;
+			    transform: translate(-50%,-50%);
+			    top: 50%;
+			    left: 50%;
+			    border-radius: 10px;
+			    backdrop-filter: blur(10px);
+			    border: 2px solid rgba(255,255,255,0.1);
+			    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+			    padding: 50px 35px;
+			}
+			form *{
+			    font-family: 'Poppins',sans-serif;
+			    color: #ffffff;
+			    letter-spacing: 0.5px;
+			    outline: none;
+			    border: none;
+			}
+			form h3{
+			    font-size: 32px;
+			    font-weight: 500;
+			    line-height: 42px;
+			    text-align: center;
+			}
+			
+			label{
+			    display: block;
+			    margin-top: 30px;
+			    font-size: 16px;
+			    font-weight: 500;
+			}
+			
+			.social{
+			  margin-top: 30px;
+			  display: flex;
+			}
+			.social div{
+			  background: red;
+			  width: 150px;
+			  border-radius: 3px;
+			  padding: 5px 10px 10px 5px;
+			  background-color: rgba(255,255,255,0.27);
+			  color: #eaf0fb;
+			  text-align: center;
+			}
+			.social div:hover{
+			  background-color: rgba(255,255,255,0.47);
+			}
+			.social .fb{
+			  margin-left: 25px;
+			}
+			.bullets {
+				background: linear-gradient(
+			        #1845ad,
+			        #23a2f6
+			    );
+				margin-top: 10px;
+				margin-left: 30px;
+			}
+			.bullets :hover{
+				color:#f09819;
+			}
+
+    </style>
+</head>
+<body>
+    <form>
+        <h3>Hey there!</h3>
+		<div class="about">
+			<h4>About Me</h4>
+			<p>My name is Andualem Teshome, I am a Full stack software developer with excellent knowledge 
+			on Object Oriented Programming concepts (OOPS). understanding of relational database concepts,
+			 and experience in query construction using SQL. I made this login form as a portfolio of my 
+			 skills developing of springboot framework. </p>
+			 <div class="bullets">
+				<ul>
+					<li>
+						<a th:href="@{/login}">Login</a>
+					</li>
+					<li>
+						<a th:href="@{/register}">Register</a>
+					</li>
+				</ul>
+			 </div>
+		</div>
+        
+        <div class="social">
+          <div class="go"><a href="https://www.linkedin.com/in/andualem-teshome-2b8b75212/" target="_blank"></i>  Linkedin</div>
+          <div class="fb"><a href="https://github.com/Andualem22" target="_blank"></i>  Github</div>
+        </div>
+    </form>
+</body>
+</html>

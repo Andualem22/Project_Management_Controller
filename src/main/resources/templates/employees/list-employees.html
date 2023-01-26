@@ -25,6 +25,7 @@
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Email</th>
+						<th>Action</th>
 					</tr>
 				</thead>		
 				<tbody>
@@ -32,6 +33,18 @@
 						<td th:text="${anEmployee.firstName}"/>
 						<td th:text="${anEmployee.lastName}"/>
 						<td th:text="${anEmployee.email}"/>
+						<td>
+							<a th:href = "@{/employees/update(id=${anEmployee.employeeId})}"
+									class="btn btn-info btn-sm">
+									Update
+							</a>
+							
+							<a th:href = "@{/employees/delete(id=${anEmployee.employeeId})}"
+									class="btn btn-danger btn-sm"
+									onClick="if (!(confirm('Are you sure you want to delete this employee?'))) return false"> <!--   show's error here but it works fine -->
+									Delete
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			

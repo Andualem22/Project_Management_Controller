@@ -1,18 +1,22 @@
 package com.example.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.SequenceGenerator;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project {
@@ -28,12 +32,18 @@ public class Project {
 	
 	private String description;
 	
+	private Date startDate;
+
+	private Date endDate;
+	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST}, 
 			fetch = FetchType.LAZY)
 
 	@JoinTable(name="project_employee", 
 					joinColumns=@JoinColumn(name="project_id"),
 					inverseJoinColumns=@JoinColumn(name="employee_id"))
+	
+	@JsonIgnore
 	private List<Employee> employees;
 	
 
@@ -93,5 +103,21 @@ public class Project {
 			employees = new ArrayList<>();
 		}
 		employees.add(emp);
+	}
+	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 }

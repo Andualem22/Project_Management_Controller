@@ -5,44 +5,27 @@
 <head th:replace="~{layouts :: header}"></head>
 
 <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+     
 body{
-    background-color: #080710;
-}
-.background{
-    width: 530px;
-    height: 650px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
+    background-color: white;
 }
 
+
+
 form{
-    height: 670px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    height: 620px;
+    width: 500px;
+    background-color: #737373;
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 50%;
+    top: 55%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
+    
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -51,12 +34,7 @@ form *{
     outline: none;
     border: none;
 }
-form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-}
+
 
 label{
     display: block;
@@ -89,30 +67,8 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
-.social{
-  margin-top: 30px;
-  display: flex;
-}
-.social div{
-  background: red;
-  width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255,255,255,0.27);
-  color: #eaf0fb;
-  text-align: center;
-}
-.social div:hover{
-  background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-  margin-left: 25px;
-}
-.social i{
-  margin-right: 4px;
-}
 
-    </style>
+</style>
 
 <body>
 	<div class="background">
@@ -123,20 +79,23 @@ button{
 
 	<div class="container">
 		<form th:action="@{/employees/save}" th:object="${employee}"method="POST">
+			
+				
+			<!-- This will be used to bind to the employee that was clocked on (used for UPDATES)-->
+				<input type="hidden" th:field="${employee.employeeId}"/>
+				<h3>Create Your profile Here</h3>
+				
+				<label for="firstName">First Name</label>
+				<input type="text" placeholder="First Name" id="firstname" th:field="${employee.firstName}">
 		
-			<h3>Create Your profile Here</h3>
-			
-			<label for="firstName">First Name</label>
-			<input type="text" placeholder="First Name" id="firstname" th:field="${employee.firstName}">
-			
-			<label for="lastName">Last Name</label>
-			<input type="text" placeholder="Last Name" id="lastname" th:field="${employee.lastName}">
-			
-			<label for="username">E-mail</label>
-			<input type="text" placeholder="Email" id="username" th:field="${employee.email}">
-			
-			<button type="submit">Sign Up</button>
-			
+				<label for="lastName">Last Name</label>
+				<input type="text" placeholder="Last Name" id="lastname" th:field="${employee.lastName}">
+				
+				<label for="username">E-mail</label>
+				<input type="text" placeholder="Email" id="username" th:field="${employee.email}">
+				
+				<button type="submit">Sign Up</button>
+			</div>
 		</form>
 	</div>
 	

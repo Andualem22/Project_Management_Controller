@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.ProjectRepository;
 import com.example.dto.ChartData;
+import com.example.dto.TimeChartData;
 import com.example.entities.Project;
 
 @Service
@@ -25,5 +26,19 @@ public class ProjectService {
 	
 	public List<ChartData> getProjectStatus(){
 		return proRepo.getProjectStatus();
+	}
+
+	public Project findByProjectId(long projectId) {
+		// TODO Auto-generated method stub
+		return proRepo.findByProjectId(projectId);
+	}
+
+	public void delete(Project theProject) {
+		proRepo.delete(theProject);
+		
+	}
+	
+	public List<TimeChartData> getTimeData() {
+		return proRepo.getTimeData();
 	}
 }

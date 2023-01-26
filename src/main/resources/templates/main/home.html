@@ -62,7 +62,7 @@
 						</tr>
 					</thead>
 					<tbody> 
-						<tr th:each="aEmployeeProjectCnt : ${employeesList}">
+						<tr th:each="aEmployeeProjectCnt : ${employeesListProjectsCnt}">
 							<td th:text="${aEmployeeProjectCnt.firstName}"/>
 							<td th:text="${aEmployeeProjectCnt.lastName}"/>
 							<td th:text="${aEmployeeProjectCnt.projectCount}"/>
@@ -77,6 +77,7 @@
 	</div>
 
 <script type="text/javascript" th:src="@{js/myChart.js}"></script>
+
 
 </body>
 </html>

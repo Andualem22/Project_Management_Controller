@@ -5,29 +5,9 @@
 <head th:replace="~{layouts :: header}"></head>
 
 <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+ 
 body{
-    background-color: #080710;
-}
-.background{
-    width: 530px;
-    height: 650px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
+    background-color: white;
 }
 
 #lastname {
@@ -42,6 +22,31 @@ body{
     font-weight: 300;
 }
 
+#dp3 {
+	display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#dp4 {
+	display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
 #description {
 	 display: block;
     height: 50px;
@@ -53,6 +58,7 @@ body{
     font-size: 14px;
     font-weight: 300;
 }
+
 #email {
 	 display: block;
     height: 50px;
@@ -65,18 +71,19 @@ body{
     font-weight: 300;
 }
 form{
-    height: 720px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    height: 920px;
+    width: 500px;
+    background-color: #737373;
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 50%;
+    top: 60%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
+    margin-top: 80px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -113,7 +120,7 @@ input{
     color: black;
 }
 button{
-    margin-top: 50px;
+    margin-top: 10px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
@@ -129,8 +136,16 @@ button{
 <body>
 <nav th:replace="~{layouts :: navbar}"></nav>
 
+
+	
 	<div class="container">
 		<form th:action="@{/projects/save}" th:object="${project}"method="POST">
+		
+		<div class="form-group row">
+		
+		<!-- This will be used to bind to the employee that was clocked on (used for UPDATES)-->
+		<input type="hidden" th:field="${project.projectId}"/>
+		
 		
 		<h3>Create Your Project Here</h3>
 		
@@ -154,6 +169,24 @@ button{
 					th:text = "${employee.firstName}">
 			</option>
 		</select>
+		
+		</div>
+	
+		
+		Project Start Date:
+			<input id="dp3" type="text"  value="Start Date" th:field="${project.startDate}">
+		
+		
+		
+		
+		
+		Project End Date:
+			<input id="dp4" type="text"  value="End Date" th:field="${project.endDate}">
+		
+		<script tyoe="text/javascript">
+			$('#dp3').datepicker();
+			$('#dp4').datepicker();
+		</script>
 		<button type="submit">Create Project</button>
 		</form>
 	</div>
