@@ -1,0 +1,20 @@
+#This is to add ideas that may come in the devt stage 
+
+-idea1 => Add a type to check the issue type (for now project and task)
+
+	 When you creat an issue check if it's a projec or task from the type drop down that was created 
+	 
+	 Change the view of projects to be a dropdown'ish (look into this more)
+
+	 If it's a project create a new project, if it's a task ask which project it belongs to (from the exisiting projects)
+
+	 If it's a task add it to the projec it needs to go to
+
+	 Add an original time estimated to finish that task and print it on the ui
+		
+	 Add a inprogress and done (we alread have this, just add an update button so it can take to the page where we can update it)			
+		
+
+-idea2 => login page for users (and admin)
+
+-idea3 => give access to users suing their email address and send an email to the user when an access has been granted to a project
